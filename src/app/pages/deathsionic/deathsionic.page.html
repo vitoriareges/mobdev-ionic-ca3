@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Deaths</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- code base from mobdev classes and slides -->
+
+<ion-content>
+  <ion-searchbar name="search" [(ngModel)]="search" placeholder="Who is your killer?" cancelButtonText="Cancel"></ion-searchbar>
+  <ion-list>
+    <div *ngFor="let death of deaths | async">
+      <ion-item *ngIf="filter(death)">
+        <ion-label>
+         <div position=left>  
+           <h2> <ion-icon color="danger" name="fitness" slot="start"></ion-icon>
+          {{ death.death }}</h2> </div>
+          <div position=rigth>  
+           
+        </div>
+     
+            <h3> 
+            <p><b>Season {{death.season}} - Episode: {{death.episode}} </b></p>
+            <p>Killer: {{death.responsible}}</p>
+            <p>Cause of death: {{death.cause}}</p>
+            <p>Last Words: {{death.last_words}}</p></h3>
+       </ion-label>
+    </ion-item>
+    </div>
+    
+  </ion-list> 
+</ion-content>
